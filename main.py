@@ -18,7 +18,6 @@ client = commands.Bot(command_prefix = f'{c_prefix}',intents=discord.Intents.all
 client.remove_command('help')
 bot_status = cycle([f'{c_prefix}help','discord.py'])
 
-
 ad=f"""
 ███╗   ██╗██╗   ██╗██╗  ██╗███████╗    ██████╗  ██████╗ ████████╗
 ████╗  ██║██║   ██║██║ ██╔╝██╔════╝    ██╔══██╗██╔═══██╗╚══██╔══╝
@@ -182,7 +181,6 @@ async def Nuke(ctx:commands.Context):
 
 async def main():
     async with client:
-        #await load()
         await client.start(token=token)
 
 asyncio.run(main())
